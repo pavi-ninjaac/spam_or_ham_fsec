@@ -7,6 +7,7 @@ This file contains the methods to parsh the config files and read it.
 
 import os
 from configparser import ConfigParser
+from dataclasses import dataclass
 
 from constants import config
 
@@ -42,16 +43,6 @@ class ConfigParserHelper:
         return None
 
 
-class LogisticRegressionConfig(ConfigParserHelper):
-    """
-    Config parser for the logistic regression config file.
-    """
-    def __init__(self):
-        file_path: str = os.path.join(config.CONFIG_FILE_DIRECTORY, config.LOGISTIC_REGRESSION_CONFIG_NAME)
-        super().__init__(file_path)
-        self.load()
-
-
 class PreprocessConfig(ConfigParserHelper):
     """
     Config parser for the logistic regression config file.
@@ -60,3 +51,61 @@ class PreprocessConfig(ConfigParserHelper):
         file_path: str = os.path.join(config.CONFIG_FILE_DIRECTORY, config.PREPROCESS_CONFIG_NAME)
         super().__init__(file_path)
         self.load()
+
+
+@dataclass
+class LogisticRegressionConfig:
+    """
+    Model parameters for logistic regression.
+    """
+    C: float = 0.006739078892927555
+    max_iter: int = 483
+    solver: str = "liblinear"
+    penalty: str = "l2"
+
+
+@dataclass
+class SVCConfig:
+    """
+    Model parameters for SVM classification.
+    """
+    C: float = 0.7536299183832335
+    kernel: str =  'sigmoid'
+    gamma: float = 0.38769439007402395
+    degree: int = 5
+
+
+@dataclass
+class RandomForestConfig:
+    """
+    Model parameters for Random Forest classification.
+    """
+    n_estimators: int =  75
+    max_depth: int = 3
+    min_samples_split:int = 9
+    min_samples_leaf:int =  10
+    max_features: str = "sqrt"
+    random_state: int = 42
+
+
+@dataclass
+class XGBoostConfig:
+    """
+    Model parameters for XGBoost classification.
+    """
+    max_depth: int = 9
+    learning_rate: float = 0.27575078431012434
+    n_estimators: int = 69
+    subsample: float = 0.6785914805836307
+    gamma: float = 0.5737136862039166
+    objective: str = "binary:logistic"
+    use_label_encoder: bool = False
+    eval_metric: str = 'logloss'
+
+
+@dataclass
+class NueralNetworkConfig:
+    """
+    Model parameters for Nueral Network classification.
+    """
+    hidden_layers: int = 1

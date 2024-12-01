@@ -5,7 +5,7 @@ DAG for model training.
 from airflow.decorators import dag, task
 from airflow.operators.dagrun_operator import TriggerDagRunOperator
 
-from core.libs.train_model import train_logistic_regression
+from core.libs.train_logistic_reg_model import train_logistic_regression
 
 default_args = {
     'owner': 'airflow',

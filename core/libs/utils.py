@@ -12,6 +12,7 @@ from sklearn.metrics import (
     recall_score,
 )
 
+from core.config.config_parser_file import PreprocessConfig
 from core.logger import backend_logger
 
 
@@ -48,3 +49,12 @@ def get_classification_metrics(y_test: pd.DataFrame, y_pred: pd.DataFrame) -> di
         "f1_score": f1_score(y_test, y_pred),
         "confusion_matrix": confusion_matrix(y_test, y_pred),
     }
+
+
+def get_unique_run_name(model_name: str):
+    """
+    Make a name out of the parameters.
+    """
+    data = PreprocessConfig().get_config_items("param")
+    param = "-".join([f"{k}_{v}" for k, v in data.items()])
+    return model_name + param
