@@ -8,6 +8,7 @@ from sklearn.metrics import (
     classification_report,
     confusion_matrix,
     f1_score,
+    fbeta_score,
     precision_score,
     recall_score,
 )
@@ -29,6 +30,7 @@ def log_classification_metrics(y_test: pd.DataFrame, y_pred: pd.DataFrame,
     backend_logger.info(f"Precision: {precision_score(y_test, y_pred)}")
     backend_logger.info(f"Recall: {recall_score(y_test, y_pred)}")
     backend_logger.info(f"F1 score: {f1_score(y_test, y_pred)}")
+    backend_logger.info(f"F-beta score: {fbeta_score(y_test, y_pred, beta=2)}")
     backend_logger.info(f"{'='*50}")
     backend_logger.info(f"{classification_report(y_test, y_pred)}")
     backend_logger.info("\n")
@@ -48,6 +50,7 @@ def get_classification_metrics(y_test: pd.DataFrame, y_pred: pd.DataFrame) -> di
         "recall": recall_score(y_test, y_pred),
         "f1_score": f1_score(y_test, y_pred),
         "confusion_matrix": confusion_matrix(y_test, y_pred),
+        "fb_score": fbeta_score(y_test, y_pred, beta=2),
     }
 
 

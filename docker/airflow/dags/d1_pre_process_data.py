@@ -24,7 +24,6 @@ from core.libs.train_logistic_reg_model import train_logistic_regression
 #from core.libs.train_nueral_nertwork import train_nueral_network
 from core.libs.train_random_forest import train_random_forest
 from core.libs.train_svc_model import train_svc
-from core.libs.train_xgboost_model import train_xgboost
 
 default_args = {
     'owner': 'airflow',
@@ -116,19 +115,11 @@ def pre_processing_pipeline():
 
         return "Random Forest Model trained."
 
-    @task
-    def train_xgboost_classification_task() -> str:
-        """
-        Task to train XGBoost classification model.
-        """
-        train_xgboost()
-
-        return "XGBoost Model trained."
 
     info = check_dataset()
-    info >> prepare_data_task() >> check_preprocessed_dataset()
-    # check_dataset() >> prepare_data_task() >> check_preprocessed_dataset() >> [train_logistic_regression_task(), train_svm_classification_task(),
-    #                                                                            train_random_forest_classification_task(), train_xgboost_classification_task()]
+    # info >> prepare_data_task() >> check_preprocessed_dataset()
+    info >> prepare_data_task() >> check_preprocessed_dataset() >> [train_logistic_regression_task(), train_svm_classification_task(),
+                                                                    train_random_forest_classification_task()]
 
 
 model_training_pipeline_dag = pre_processing_pipeline()

@@ -62,6 +62,7 @@ class LogisticRegressionConfig:
     max_iter: int = 483
     solver: str = "liblinear"
     penalty: str = "l2"
+    class_weight: str = "balanced"
 
 
 @dataclass
@@ -73,6 +74,7 @@ class SVCConfig:
     kernel: str =  'sigmoid'
     gamma: float = 0.38769439007402395
     degree: int = 5
+    class_weight: str ="balanced"
 
 
 @dataclass
@@ -86,21 +88,7 @@ class RandomForestConfig:
     min_samples_leaf:int =  10
     max_features: str = "sqrt"
     random_state: int = 42
-
-
-@dataclass
-class XGBoostConfig:
-    """
-    Model parameters for XGBoost classification.
-    """
-    max_depth: int = 9
-    learning_rate: float = 0.27575078431012434
-    n_estimators: int = 69
-    subsample: float = 0.6785914805836307
-    gamma: float = 0.5737136862039166
-    objective: str = "binary:logistic"
-    use_label_encoder: bool = False
-    eval_metric: str = 'logloss'
+    class_weight: str = "balanced"
 
 
 @dataclass

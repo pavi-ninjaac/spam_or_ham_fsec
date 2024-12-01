@@ -36,7 +36,7 @@ def train_logistic_regression():
 
     #mlflow.set_tracking_uri(mlflow_consts.MLFLOW_TRACKING_URI)
     dagshub.init(repo_owner='pavipd495', repo_name='spam_or_ham_fsec', mlflow=True)
-    mlflow.set_experiment("Spam Or Ham")
+    mlflow.set_experiment("Spam_Or_Ham")
 
     param: dict = asdict(LogisticRegressionConfig())
     unique_run_name = get_unique_run_name(model_name="log_reg")
