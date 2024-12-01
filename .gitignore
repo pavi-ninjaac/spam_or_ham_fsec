@@ -164,3 +164,4 @@ docker/airflow/logs/
 data/
 Data/
 docker/mlflow/mlruns/
+spam_ham_env/
