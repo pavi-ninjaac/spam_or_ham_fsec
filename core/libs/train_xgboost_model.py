@@ -34,6 +34,15 @@ def train_xgboost():
     y_train = pd.read_csv(y_train_file, header=None)
     y_test = pd.read_csv(y_test_file, header=None)
 
+    # replace 1 with 0 and -1 with 1.
+
+    # because XGBoost excepts: ValueError: Invalid classes inferred from unique values of `y`.  Expected: [0 1], got [-1  1]
+    y_train.replace(1, 0, inplace=True)
+    y_train.replace(-1, 1, inplace=True)
+
+    y_test.replace(1, 0, inplace=True)
+    y_test.replace(-1, 1, inplace=True)
+
     # mlflow.set_tracking_uri(mlflow_consts.MLFLOW_TRACKING_URI)
     dagshub.init(repo_owner='pavipd495', repo_name='spam_or_ham_fsec', mlflow=True)
     mlflow.set_experiment("Spam Or Ham")

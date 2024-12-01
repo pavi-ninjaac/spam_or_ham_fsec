@@ -11,6 +11,7 @@
 - 4 | Shape: (3750, 10000)
 - 5 | Null value: There are no null values present in the data.
 - 6 | Imbalance target dataset?: Highly Imbalanced dataset. (1: 90%  and -1: 10%)
+- 7 | Target value is looking like 1, -1.
 
 To Note:
 
@@ -18,6 +19,7 @@ To Note:
 - 2 | 10k features -- **Need to select a suitable Dimensionality Reduction**
 - 3 | ***No need to handle null values***.
 - 4 | Imbalanced dataset: **Need to handle it.**
+- 5 | **Need to change the target value to 0 and 1, because scikit-learn considers 1 as positive and 0 as negative**
 
 # Step 2: Flow.
 
@@ -53,3 +55,38 @@ Have few models in mind.
 - 4 | KNN - suffers with high dimensions, and computationally expensive to get the distance, Not using it.
 - 5 | Tree based models -- better to try Random forest and XGBoost.
 - 6 | Nueral network. - of course.
+
+choosed models:
+- logistic and SVC - base models.
+- Random forest and XGBoost
+- Deep learning
+- Transformers (If time allows)
+
+# Step 5: Target value fixing.
+
+why this is important?
+- We need to choose the evaluation metrics based on the application we need.
+- Take Precision, if you wanna focus more on False Positive(FP). (ie. if you want to reduce FP more.)
+- Take Recall, if you wanna focus more on False Negative(FN).
+
+\[
+\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
+\]
+
+\[
+\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+\]
+
+- In scikit-learn, by default one is considered as positive class and 0 is negative class. precision , recall and f1-score is calculated based on this.
+- So it is important to decide which is our positive class and which is our negative class. and mark the tables based on this.
+
+According to this consideration, For as saying spam is positive (our goal).
+```
+1    90.0
+-1    10.0
+Name: count, dtype: float64
+```
+this is our target class distribution, It's not given which represents spam and which represents ham. based on assumption of we have more data as not spam, I am considering 1 as not spam and -1 as spam.
+
+- So. we need to convert -1 to 1 (positive class)
+- we need to convert 1 to 0 (negative class).

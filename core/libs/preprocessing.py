@@ -138,3 +138,17 @@ def save_preprocessed_data(X_train_pca: np.ndarray, X_test_pca: np.ndarray, y_tr
     np.savetxt(y_test_file, y_test, delimiter=',', fmt='%d')
 
     backend_logger.info("The data is saved successfully to the target folder. :)")
+
+
+def replace_target_class_name(y_train, y_test):
+    """
+    replace -1 to 1 and 1 to 0.
+    """
+    y_train.replace(1, 0, inplace=True)
+    y_train.replace(-1, 1, inplace=True)
+
+
+    y_test.replace(1, 0, inplace=True)
+    y_test.replace(-1, 1, inplace=True)
+
+    return y_train, y_test
