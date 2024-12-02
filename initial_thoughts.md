@@ -96,3 +96,10 @@ this is our target class distribution, It's not given which represents spam and 
 
 - So. we need to convert -1 to 1 (positive class)
 - we need to convert 1 to 0 (negative class).
+
+
+# Improvements:
+- Get more data to train the models.
+- Try better Data augmentation techniques, like GAN for generate more data.
+- Can try fine-tuning LLMs if we have text as input.
+- Since we have very less amount of data, even very complex DL models are just overfitting the data. ***Generate or collect more data.***
