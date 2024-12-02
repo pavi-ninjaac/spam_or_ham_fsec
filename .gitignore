@@ -165,3 +165,4 @@ data/
 Data/
 docker/mlflow/mlruns/
 spam_ham_env/
+prediction/test_data.csv
