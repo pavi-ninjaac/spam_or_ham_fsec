@@ -6,6 +6,8 @@ from typing import Final
 
 AIRFLOW_HOME_DIR: Final[str] = "/opt/airflow/"
 AIRFLOW_CORE_DIR: Final[str] = "/opt/airflow/core/"
+AIRFLOW_LIBS_DIR: Final[str] = "/opt/airflow/core/libs"
+AIRFLOW_TRANSFORMERS_DIR: Final[str] = "/opt/airflow/core/libs/tranformers"
 SOURCE_DATA_DIR: Final[str] = "/opt/airflow/data/source"
 TARGET_DATA_DIR: Final[str] = "/opt/airflow/data/target"
 TRAIN_DATA_FILE_NAME: Final[str] = "train_data.csv"

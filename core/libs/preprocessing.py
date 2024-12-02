@@ -2,6 +2,7 @@
 Contains the preprocessing functions for the pipeline.
 """
 import os
+import pickle
 
 import numpy as np
 import pandas as pd
@@ -89,6 +90,8 @@ def standardize_data(X_train: pd.DataFrame, X_test:pd.DataFrame):
     backend_logger.info("Standard scaling is happening...")
     X_train_scaled = scaler.fit_transform(X_train)
     X_test_scaled = scaler.transform(X_test)
+    with open(os.path.join(airflow.AIRFLOW_TRANSFORMERS_DIR, "scaler.pkl"), "wb") as f:
+        pickle.dump(scaler, f)
     backend_logger.info("Standard scaling is completed successfully.")
 
     return X_train_scaled, X_test_scaled
@@ -108,6 +111,8 @@ def dimensionality_reduction_pca(X_train: pd.DataFrame, X_test:pd.DataFrame):
     backend_logger.info(f"PCA is happening with the n_components of {n_components}...")
     X_train_pca = pca.fit_transform(X_train)
     X_test_pca = pca.transform(X_test)
+    with open(os.path.join(airflow.AIRFLOW_TRANSFORMERS_DIR, "pca.pkl"), "wb") as f:
+        pickle.dump(pca, f)
     backend_logger.info("PCA is completed successfully.")
 
     backend_logger.info(f"Shape of everything after PCA: X_Train - {X_train_pca.shape}, X_Test - {X_test_pca.shape}")

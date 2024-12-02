@@ -18,3 +18,4 @@
 
 From clean code perspective:
 - Need to handle exceptions more gracefully.
+- Need to make a prediction pipeline.
