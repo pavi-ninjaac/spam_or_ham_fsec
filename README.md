@@ -2,12 +2,12 @@
 
 - #### Initial thoughts about the project and approach are explained here: [Initial_thoughts.md](https://github.com/pavi-ninjaac/spam_or_ham_fsec/blob/main/initial_thoughts.md)
 
-- #### Task 1 files are present here: [Task 1](https://github.com/pavi-ninjaac/spam_or_ham_fsec/tree/main/task1_document)
+- #### Task 1 files are present here: [Task 1](https://github.com/pavi-ninjaac/spam_or_ham_fsec/blob/main/task1_document/workflow.pdf)
 
 - #### Experimented model information are present here: [MlFlow Experiment runs](https://dagshub.com/pavipd495/spam_or_ham_fsec.mlflow/#/experiments/2?searchFilter=&orderByKey=attributes.start_time&orderByAsc=false&startTime=ALL&lifecycleFilter=Active&modelVersionFilter=All+Runs&datasetsFilter=W10%3D)
 
 
-- #### Predicted output file: [prediction]()
+- #### Predicted output file: [prediction](https://github.com/pavi-ninjaac/spam_or_ham_fsec/tree/main/prediction)
 
 
 # Improvements:
