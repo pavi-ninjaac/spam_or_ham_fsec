@@ -45,7 +45,7 @@ Note: ***PCA seems the better option for me here.***
 # Step 3: Handle Imbalance dataset.
 - 1 | try re-sampling
 - 2 | Give more wight to the minority class.
-- 3 | Evaluation metric: We can't use Accuracy here. Use Precesion or recall and F1-score.
+- 3 | Evaluation metric: We can't use Accuracy here. Use Precesion and recall and F1-score. (both FP and FN is important here.)
 
 
 SMOTE - oversampling not good for the embedding data, because embedding comes with a lot of complex sematic interconnect relationships.
