@@ -47,6 +47,12 @@ Note: ***PCA seems the better option for me here.***
 - 2 | Give more wight to the minority class.
 - 3 | Evaluation metric: We can't use Accuracy here. Use Precesion or recall and F1-score.
 
+
+SMOTE - oversampling not good for the embedding data, because embedding comes with a lot of complex sematic interconnect relationships.
+- (tested with SMOTE giving bad results).
+- So we can use some Deep learning models to generate sinthetic data.
+- we can use pre-trained LLMs here.
+
 # Step 4: Choose model.
 Have few models in mind.
 - 1 | Naive Bayes -- data is not in categorical/binary formate. The data independent assumption is not here. Not so good to go with this.
