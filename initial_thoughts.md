@@ -15,19 +15,28 @@
 
 To Note:
 
-- 1 | all the rows are fixed length -- **No need for padding/trimming.**
-- 2 | 10k features -- **Need to select a suitable Dimensionality Reduction.**
-- 3 | ***No need to handle null values.***
-- 4 | Imbalanced dataset: **Need to handle it.**
-- 5 | **Need to change the target value to 0 and 1, because scikit-learn considers 1 as positive and 0 as negative.**
+- All the rows are fixed length -- **No need for padding/trimming.**
+- 10k features -- **Need to select a suitable Dimensionality Reduction.**
+- ***No need to handle null values.***
+- Imbalanced dataset: **Need to handle it.**
+- **Need to change the target value to 0 and 1, because scikit-learn considers 1 as positive and 0 as negative.**
 
 # Step 2: Flow.
 
 Since the data is embeddings, reduces a lot of work here. (data is pretty clean :) )
-- 1 | Dimensionality reduction.
-- 2 | Handle imbalance dataset.
-- 2 | training and validation.
-- 3 | testing.
+The flow should be:
+- Split the dataset - to avoid data leakage.
+- Re-sampling - over-sampling and under-sampling.
+
+    - resampling only on the train data to keep the test data as original one, maintaining real-world distribution of data.
+- Standarise your data
+- Then do PCA
+
+    - Why PCA after resampling?, PCA is to get the features covering most variance. If you do PCA before re-sampling the princible components  are computes based on the original data. the re-sampling can affect those principle components.
+
+- Store the pre-processed data in the target folder.
+- Model training and hyperparameter tuning.
+- Testing and deploying the model.
 
 # Step 2: Choose a dimensionality reduction method.
 
@@ -43,9 +52,9 @@ Have 2 options in mind, PCA and SVD.
 Note: ***PCA seems to be the better option for me here.***
 
 # Step 3: Handle Imbalance dataset.
-- 1 | try re-sampling.
-- 2 | Give more wight to the minority class.
-- 3 | Evaluation metric: We can't use Accuracy here. Use Precesion and recall and F1-score. (both FP and FN is important here.)
+- Try re-sampling. Hybrid: Over-sampling + under-sampling + weighted models.
+- Give more wight to the minority class.
+- Evaluation metric: We can't use Accuracy here. Use Precesion and recall and F1-score. (both FP and FN is important here.)
 
 
 SMOTE - oversampling not good for the embedding data, because embedding comes with a lot of complex sematic interconnect relationships.
