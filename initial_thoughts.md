@@ -51,7 +51,7 @@ Note: ***PCA seems the better option for me here.***
 SMOTE - oversampling not good for the embedding data, because embedding comes with a lot of complex sematic interconnect relationships.
 - (tested with SMOTE giving bad results).
 - So we can use some Deep learning models to generate sinthetic data.
-- we can use pre-trained LLMs here.
+- we can use pre-trained LLMs here. (but we don't have text data for it)
 
 # Step 4: Choose model.
 Have few models in mind.
@@ -66,7 +66,7 @@ choosed models:
 - logistic and SVC - base models.
 - Random forest and XGBoost
 - Deep learning
-- Transformers (If time allows)
+- Transformers - It requires text input, we have embeddings only. Still we can try writing transformers from scratch.
 
 # Step 5: Target value fixing.
 
