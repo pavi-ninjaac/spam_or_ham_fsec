@@ -117,9 +117,9 @@ def pre_processing_pipeline():
 
 
     info = check_dataset()
-    info >> prepare_data_task() >> check_preprocessed_dataset()
-    # info >> prepare_data_task() >> check_preprocessed_dataset() >> [train_logistic_regression_task(), train_svm_classification_task(),
-    #                                                                 train_random_forest_classification_task()]
+    #info >> prepare_data_task() >> check_preprocessed_dataset()
+    info >> prepare_data_task() >> check_preprocessed_dataset() >> [train_logistic_regression_task(), train_svm_classification_task(),
+                                                                    train_random_forest_classification_task()]
 
 
 model_training_pipeline_dag = pre_processing_pipeline()
